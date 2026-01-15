@@ -1,0 +1,18 @@
+server:
+  port: 8081
+  host: "0.0.0.0"
+
+redis:
+  host: "redis"        
+  port: 6379
+  password: ""
+  db: 0
+
+kafka:
+  host: "kafka"     
+  port: 9092
+  topic: "person_events"
+  group_id: "notification_service_group"
+
+service:
+  reminder_days: [30, 14, 7]

@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package notification.service.v1;
+
+option go_package = "notification_service/internal/pb/notification_api";
+
+import "models/notification_model.proto";
+import "google/api/annotations.proto";
+
+service NotificationService {
+    rpc GetReminders(models.ReminderRequest) returns (models.ReminderResponse) {
+        option (google.api.http) = {
+            get: "/v1/reminders"
+        };
+    }
+}

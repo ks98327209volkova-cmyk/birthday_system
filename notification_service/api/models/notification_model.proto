@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package models;
+
+option go_package = "notification_service/internal/pb/models";
+
+// напоминание о дне рождения
+message Reminder {
+    string id = 1;
+    uint64 person_id = 2;
+    string person_name = 3;
+    string birthday = 4;          
+    string reminder_date = 5;    
+    uint32 days_until = 6;
+}
+
+// запрос на получение напоминаний
+message ReminderRequest {
+    string month = 1;  // формат: "2024-01"
+}
+
+// ответ с напоминаниями
+message ReminderResponse {
+    repeated Reminder reminders = 1;
+}

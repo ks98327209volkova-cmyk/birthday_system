@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package models;
+
+option go_package = "gift_manager/internal/pb/models";
+
+
+
+message Person {
+    uint64 id = 1;
+    string name = 2;
+    string birthday= 3;
+    string category = 4;
+}
+
+message GiftIdea {
+    uint64 id = 1;
+    uint64 person_id = 2;
+    string idea = 3;
+    string notes = 4;
+}
+
+message GiftHistory {
+    uint64 id = 1;
+    uint64 person_id = 2;
+    string gift = 3;
+    uint32 year = 4;
+}

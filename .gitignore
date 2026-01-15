@@ -1,0 +1,61 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+/app
+gift_manager/app*
+notification_service/app*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Go
+vendor/
+go.sum
+
+# Coverage
+cover.out
+*.coverprofile
+coverage.txt
+profile.cov
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temp files
+*.tmp
+*.temp
+temp/
+
+# Docker
+.env
+*.env.local
+
+
+internal/pb/
+!internal/pb/.gitkeep
+
+
+gift_manager/internal/pb/
+!gift_manager/internal/pb/.gitkeep
+
+notification_service/internal/pb/
+!notification_service/internal/pb/.gitkeep
+
+# Swagger generated JSON
+*.swagger.json
+
+# Test outputs
+test_results/

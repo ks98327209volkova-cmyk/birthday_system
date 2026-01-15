@@ -1,0 +1,147 @@
+syntax = "proto3";
+
+package gift_manager.service.v1;
+
+option go_package = "gift_manager/internal/pb/gift_manager_api";
+
+import "models/person_model.proto";
+import "google/api/annotations.proto";
+
+service GiftManagerService {
+    rpc AddPerson(AddPersonRequest) returns (AddPersonResponse) {
+        option (google.api.http) = {
+            post: "/v1/person/add"
+            body: "*"
+        };
+    }
+    
+    rpc GetPersonByID(GetPersonByIDRequest) returns (GetPersonByIDResponse) {
+        option (google.api.http) = {
+            get: "/v1/person/{id}"
+        };
+    }
+    
+    rpc UpdatePerson(UpdatePersonRequest) returns (UpdatePersonResponse) {
+        option (google.api.http) = {
+            put: "/v1/person/{person.id}"
+            body: "*"
+        };
+    }
+    
+    rpc DeletePerson(DeletePersonRequest) returns (DeletePersonResponse) {
+        option (google.api.http) = {
+            delete: "/v1/person/{id}"
+        };
+    }
+    
+    rpc GetAllPersons(GetAllPersonsRequest) returns (GetAllPersonsResponse) {
+        option (google.api.http) = {
+            get: "/v1/persons"
+        };
+    }
+    
+    rpc AddGiftIdea(AddGiftIdeaRequest) returns (AddGiftIdeaResponse) {
+        option (google.api.http) = {
+            post: "/v1/person/{person_id}/gift-ideas"
+            body: "*"
+        };
+    }
+    
+    rpc GetGiftIdeasByPersonID(GetGiftIdeasByPersonIDRequest) returns (GetGiftIdeasByPersonIDResponse) {
+        option (google.api.http) = {
+            get: "/v1/person/{person_id}/gift-ideas"
+        };
+    }
+    
+    rpc DeleteGiftIdea(DeleteGiftIdeaRequest) returns (DeleteGiftIdeaResponse) {
+        option (google.api.http) = {
+            delete: "/v1/person/{person_id}/gift-ideas/{idea_id}"
+        };
+    }
+    
+    rpc AddGiftHistory(AddGiftHistoryRequest) returns (AddGiftHistoryResponse) {
+        option (google.api.http) = {
+            post: "/v1/person/{person_id}/gift-history"
+            body: "*"
+        };
+    }
+    
+    rpc GetGiftHistoryByPersonID(GetGiftHistoryByPersonIDRequest) returns (GetGiftHistoryByPersonIDResponse) {
+        option (google.api.http) = {
+            get: "/v1/person/{person_id}/gift-history"
+        };
+    }
+}
+
+message AddPersonRequest {
+    models.Person person = 1;
+}
+
+message AddPersonResponse {
+    models.Person person = 1;
+}
+
+message GetPersonByIDRequest {
+    uint64 id = 1;
+}
+
+message GetPersonByIDResponse {
+    models.Person person = 1;
+}
+
+message UpdatePersonRequest {
+    models.Person person = 1;
+}
+
+message UpdatePersonResponse {}
+
+message DeletePersonRequest {
+    uint64 id = 1;
+}
+
+message DeletePersonResponse {}
+
+message GetAllPersonsRequest {}
+
+message GetAllPersonsResponse {
+    repeated models.Person persons = 1;
+}
+
+message AddGiftIdeaRequest {
+    uint64 person_id = 1;
+    string idea = 2;
+    string notes = 3;
+}
+
+message AddGiftIdeaResponse {}
+
+message GetGiftIdeasByPersonIDRequest {
+    uint64 person_id = 1;
+}
+
+message GetGiftIdeasByPersonIDResponse {
+    repeated models.GiftIdea gift_ideas = 1;
+}
+
+message DeleteGiftIdeaRequest {
+    uint64 person_id = 1;
+    uint64 idea_id = 2;
+}
+
+message DeleteGiftIdeaResponse {}
+
+message AddGiftHistoryRequest {
+    uint64 person_id = 1;
+    string gift = 2;
+    uint32 year = 3;
+}
+
+message AddGiftHistoryResponse {}
+
+message GetGiftHistoryByPersonIDRequest {
+    uint64 person_id = 1;
+}
+
+message GetGiftHistoryByPersonIDResponse {
+    repeated models.GiftHistory gift_history = 1;
+}
