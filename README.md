@@ -52,7 +52,7 @@ DELETE /v1/person/{id}/gift-ideas/{idea_id} - удалить идею подар
 POST   /v1/person/{id}/gift-history - добавить запись о подарке
 GET    /v1/person/{id}/gift-history - получить историю подарков
 ```
-**Документация API:** http://localhost:8080/swagger
+**Документация API:** http://localhost:8080/docs/index.html
 
 ### Notification Service (порт 8081)
 
